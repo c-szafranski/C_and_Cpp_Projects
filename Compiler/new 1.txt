@@ -1,0 +1,39 @@
+addi $a1, $zero, 6
+			addi $a2, $zero, 0
+			jal extract	#get function
+			
+			la $t6, func
+			sw $v0, 0($t6)	
+			
+			addi $a1, $zero, 15
+			addi $a2, $zero, 11
+			jal extract	#get rd
+			
+			la $t6, rd	
+			sw $v0, 0($t6)#store rd
+			
+			jal alufunc
+			
+			la $t6, r						
+			la $t7, rd						
+			lw $t7, 0($t7)	
+			
+			add $t7, $t7, $t7
+			add $t7, $t7, $t7				
+			add $t6, $t6, $t7				
+			sw $v0, 0($t6)		
+
+			
+			addi $t0, $t0, 4 	#increment counter			
+			jal traceout
+			
+			
+			#print out opcode
+			li $v0, 4
+			la $a0, dbug
+			syscall
+			la $a0, newline
+			syscall
+			add $a0, $zero, $v1
+			li $v0, 1
+			syscall

@@ -1,0 +1,9 @@
+program test
+ set i = 1
+ set sum = 0
+ while i <= 10 do
+ set sum = sum + i
+ set i = i + 1
+ end
+ print sum
+end program
